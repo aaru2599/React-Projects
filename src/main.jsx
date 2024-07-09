@@ -8,7 +8,8 @@ import About from "./Component/ContextAPI/About.jsx";
 import ContactUs from "./Component/ContextAPI/ContactUs.jsx";
 import FactorialNumber from "./Component/FactorialNumber/FactorialNumber.jsx";
 import PalindromString from "./Component/FactorialNumber/PalindromString.jsx";
-import Form from "./Component/ReactForms/Form.jsx";
+import Todo from "./Component/TODOCompo/Todo.jsx";
+import MainPage from "./Component/Pagination/MainPage.jsx";
 // import { ThemeProvider } from "./Component/ContextAPI/themeContext.js";
 
 const router = createBrowserRouter([
@@ -17,9 +18,19 @@ const router = createBrowserRouter([
     element: <App/>
   },
   {
+    path: "/pagination",
+    element: <MainPage/>
+  },
+  {
     path: "/home",
     element: <Home />,
   },
+  {
+    path: "/todo",
+    element: <Todo />,
+  },
+ 
+  
   {
     path: "/about",
     element: <About />,

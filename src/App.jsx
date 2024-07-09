@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import SearchUser from "./Component/SearchUser/SearchUser";
+import Child from "./Component/OffCanvas/Child";
 
 function App() {
   return (
     <>
-      <SearchUser />
+      <Child />
     </>
   );
 }

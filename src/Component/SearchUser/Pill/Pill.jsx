@@ -1,4 +1,5 @@
 
+import React from "react";
 const Pill = ({ image, text, onClick }) => {
   return (
     <span className="flex items-center  m-2 bg-slate-400  px-3 rounded-full gap-2">

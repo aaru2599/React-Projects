@@ -31,12 +31,13 @@ const Form = () => {
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
-             
             name="name"
             id="name"
             placeholder="Enter Name"
           />
-          {errors.name && touched.name ?  <div className="text-[10px] text-red-300">{errors.name}</div> : null}
+          {errors.name && touched.name ? (
+            <div className="text-[10px] text-red-300">{errors.name}</div>
+          ) : null}
         </div>
         <div className="input-block">
           <label htmlFor="email" className="input-label">
@@ -47,12 +48,13 @@ const Form = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             type="email"
-             
             name="email"
             id="email"
             placeholder="Enter Email"
           />
-          {errors.email && touched.email ?  <div className="text-[10px] text-red-300">{errors.email}</div> : null}{" "}
+          {errors.email && touched.email ? (
+            <div className="text-[10px] text-red-300">{errors.email}</div>
+          ) : null}{" "}
         </div>
         <div className="input-block">
           <label htmlFor="password" className="input-label">
@@ -63,12 +65,13 @@ const Form = () => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-             
             name="password"
             id="password"
             placeholder="Enter Password"
           />
-          {errors.password && touched.password ?  <div className="text-[10px] text-red-300">{errors.password}</div> : null}{" "}
+          {errors.password && touched.password ? (
+            <div className="text-[10px] text-red-300">{errors.password}</div>
+          ) : null}{" "}
         </div>
         <div className="input-block">
           <label htmlFor="conf_pass" className="input-label">
@@ -79,13 +82,13 @@ const Form = () => {
             value={values.conf_pass}
             onChange={handleChange}
             onBlur={handleBlur}
-             
             name="conf_pass"
             id="conf_pass"
             placeholder="Enter Password"
           />
-          {errors.conf_pass && touched.conf_pass ?  <div className="text-[10px] text-red-300">{errors.conf_pass}</div> : null}{" "}
-
+          {errors.conf_pass && touched.conf_pass ? (
+            <div className="text-[10px] text-red-300">{errors.conf_pass}</div>
+          ) : null}{" "}
         </div>
         <button>Submit</button>
       </form>

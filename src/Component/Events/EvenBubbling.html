@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="outer">
+      <div id="inner">
+        <div id="mostinner">Click Me!</div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("outer").addEventListener(
+        "click",
+        (e) => {
+          console.log("outer called");
+          e.stopPropagation();
+
+        },
+        true
+      );
+      document.getElementById("inner").addEventListener(
+        "click",
+        (e) => {
+          console.log("inner called");
+
+        },
+        true
+      );
+      document.getElementById("mostinner").addEventListener(
+        "click",
+        (e) => {
+          console.log("mostinner called");
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

@@ -1,30 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const OtpInput = () => {
-  const [phoneNo, setPhoneNo] = useState("");
-  const handlePhoneSubmit = (e) => {
-    e.preventDefault();
-    setPhoneNo("")
-    console.log("phoneNo",phoneNo);
-    // const regEx=
+const OtpInput = ({ length, onChangeOtp }) => {
+  const [otp, setotp] = useState(new Array(length).fill(""));
+  console.log("otp", otp);
+  const handleInputChange = (index, e) => {
+    const value = e.target.value;
+    if (isNaN(value)) return;
+    const newOtp = [...otp];
+
+    // allows validation
+    newOtp[index] = value.substring(value.length - 1);
+    setotp(newOtp);
+    const combinedOtp = newOtp.join("");
+    console.log("combinedOtp", combinedOtp);
+    if (combinedOtp.length === length) {
+      onChangeOtp(combinedOtp);
+    }
+
+    // move to next
+
+    if (value && index < length - 1 && inputRefs.current[index + 1]) {
+      inputRefs.current[index + 1].focus();
+    }
   };
+  const handleClick = (index) => {
+    inputRefs.current[index].setSelectionRange(1, 1);
+  };
+  const handleKeyDown = (index, e) => {
+    if (
+      e.key === "Backspace" &&
+      !otp[index] &&
+      index > 0 &&
+      inputRefs.current[index - 1]
+    ) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
+  const inputRefs = useRef([]);
+  console.log("inputRefs", inputRefs);
+  useEffect(() => {
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  }, []);
   return (
-    <form
-      onSubmit={handlePhoneSubmit}
-      className="gap-2 bg-white p-4 flex flex-col justify-center items-center shadow-lg rounded"
-    >
-      <div className="text-[20px] font-semibold">Phone Number</div>
-      <input
-        type="text"
-        className="border-2 border-gray-600 rounded"
-        placeholder="Enter Phone number"
-        value={phoneNo}
-        onChange={(e) => setPhoneNo(e.target.value)}
-      />
-      <button type="submit" className="border-2 px-4 rounded bg-rose-200">
-        Submit
-      </button>
-    </form>
+    <div>
+      <div>OtpInput</div>
+      {otp.map((value, index) => {
+        return (
+          <input
+            type="text"
+            value={value}
+            key={index}
+            ref={(input) => (inputRefs.current[index] = input)}
+            className="border w-[40px] h-[40px] p-[2px] m-1 text-center"
+            onChange={(e) => handleInputChange(index, e)}
+            onClick={() => handleClick(index)}
+            onKeyDown={(e) => handleKeyDown(index, e)}
+          />
+        );
+      })}
+    </div>
   );
 };
 
